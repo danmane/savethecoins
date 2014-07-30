@@ -334,13 +334,6 @@ var photoCloud = {
     $('#sp_tw a').click();
   });
 
-  var formFields = [
-    "action_comment",
-    "address1",
-    "email",
-    "name",
-    "zip"
-  ];
 
   // Prevent tabbing to textarea.
   $('form textarea').on('focus', function(e) {
@@ -390,6 +383,14 @@ var photoCloud = {
     $('#editModal').modal('hide');
   });
 
+  var formFields = [
+    "action_comment",
+    "address1",
+    "email",
+    "name",
+    "zip"
+  ];
+
   function postUser($form) {
     var ok = true;
     var doc = {};
@@ -406,15 +407,21 @@ var photoCloud = {
     doc['org'] = window.org;
 
     if (ok) {
-      $.ajax({
-        url: "https://api.battleforthenet.com/submit",
-        type: "post",
-        dataType: "json",
-        data: doc,
-        success: function(res) {
-          userID = res.userID;
-        }
-      });
+      alert("this is the point where we'd proxy it over");
+      console.log(doc);
+      var formNameInput    = $("#entry_419952081");
+      var formEmailInput   = $("#entry_896765256");
+      var formAddressInput = $("#entry_2045892751");
+      var formZIPInput     = $("#entry_1457167586");
+      var formCommentInput = $("#entry_427730933");
+
+      formNameInput[0].value = doc["name"];
+      formEmailInput[0].value = doc["email"];
+      formAddressInput[0].value = doc["address1"];
+      formZIPInput[0].value = doc["zip"]
+      formCommentInput[0].value = doc["action_comment"];
+
+      $("#ss-submit")[0].click();
     }
     return ok;
   }
