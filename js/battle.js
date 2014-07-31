@@ -135,8 +135,6 @@ jQuery.template = (function ($) {
     doc['org'] = window.org;
 
     if (ok) {
-      alert("this is the point where we'd proxy it over");
-      console.log(doc);
       var formNameInput    = $("#entry_419952081");
       var formEmailInput   = $("#entry_896765256");
       var formAddressInput = $("#entry_2045892751");
